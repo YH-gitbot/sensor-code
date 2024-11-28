@@ -1,0 +1,78 @@
+[1/5] cd /Users/shumouren/esp/Template/build/esp-idf/esptool_py && /Users/shumouren/.espressif/python_env/idf5.3_py3.11_env/bin/python /Users/shumouren/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /Users/shumouren/esp/Template/build/partition_table/partition-table.bin /Users/shumouren/esp/Template/build/PIR.bin
+PIR.bin binary size 0xec250 bytes. Smallest app partition is 0x177000 bytes. 0x8adb0 bytes (37%) free.
+[2/5] Performing build step for 'bootloader'
+[1/1] cd /Users/shumouren/esp/Template/build/bootloader/esp-idf/esptool_py && /Users/shumouren/.espressif/python_env/idf5.3_py3.11_env/bin/python /Users/shumouren/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /Users/shumouren/esp/Template/build/bootloader/bootloader.bin
+Bootloader binary size 0x6880 bytes. 0x780 bytes (7%) free.
+[3/5] No install step for 'bootloader'
+[4/5] Completed 'bootloader'
+[4/5] cd /Users/shumouren/esp/esp-idf/components/esptool_py && /opt/homebrew/Cellar/cmake/3.30.5/bin/cmake -D IDF_PATH=/Users/shumouren/esp/esp-idf -D "SERIAL_TOOL=/Users/shumouren/.espressif/python_env/idf5.3_py3.11_env/bin/python;;/Users/shumouren/esp/esp-idf/components/esptool_py/esptool/esptool.py;--chip;esp32" -D "SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@flash_args" -D WORKING_DIRECTORY=/Users/shumouren/esp/Template/build -P /Users/shumouren/esp/esp-idf/components/esptool_py/run_serial_tool.cmake
+esptool.py --chip esp32 -p /dev/cu.usbserial-015E0000 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 40m --flash_size 4MB 0x1000 bootloader/bootloader.bin 0x10000 PIR.bin 0x8000 partition_table/partition-table.bin
+esptool.py v4.8.1
+Serial port /dev/cu.usbserial-015E0000
+Connecting....
+Chip is ESP32-D0WD-V3 (revision v3.0)
+Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme None
+Crystal is 40MHz
+MAC: 94:b9:7e:56:1a:bc
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 460800
+Changed.
+Configuring flash size...
+Flash will be erased from 0x00001000 to 0x00007fff...
+Flash will be erased from 0x00010000 to 0x000fcfff...
+Flash will be erased from 0x00008000 to 0x00008fff...
+SHA digest in image updated
+Compressed 26752 bytes to 16354...
+Writing at 0x00001000... (100 %)
+Wrote 26752 bytes (16354 compressed) at 0x00001000 in 0.9 seconds (effective 241.8 kbit/s)...
+Hash of data verified.
+Compressed 967248 bytes to 609086...
+Writing at 0x00010000... (2 %)
+Writing at 0x0001c856... (5 %)
+Writing at 0x00028d8c... (7 %)
+Writing at 0x0002dd5a... (10 %)
+Writing at 0x00033c94... (13 %)
+Writing at 0x0003ed64... (15 %)
+Writing at 0x00044a44... (18 %)
+Writing at 0x0004a673... (21 %)
+Writing at 0x0005032b... (23 %)
+Writing at 0x00056199... (26 %)
+Writing at 0x0005bafc... (28 %)
+Writing at 0x00061867... (31 %)
+Writing at 0x0006758b... (34 %)
+Writing at 0x0006d247... (36 %)
+Writing at 0x00072f87... (39 %)
+Writing at 0x00078b90... (42 %)
+Writing at 0x0007f300... (44 %)
+Writing at 0x00084d4b... (47 %)
+Writing at 0x0008ab83... (50 %)
+Writing at 0x000905df... (52 %)
+Writing at 0x00095769... (55 %)
+Writing at 0x0009ad5f... (57 %)
+Writing at 0x000a0090... (60 %)
+Writing at 0x000a55bb... (63 %)
+Writing at 0x000aacbe... (65 %)
+Writing at 0x000b0406... (68 %)
+Writing at 0x000b6118... (71 %)
+Writing at 0x000bbaf9... (73 %)
+Writing at 0x000c185a... (76 %)
+Writing at 0x000c741c... (78 %)
+Writing at 0x000ccc40... (81 %)
+Writing at 0x000d7631... (84 %)
+Writing at 0x000de56a... (86 %)
+Writing at 0x000e4095... (89 %)
+Writing at 0x000e9ce5... (92 %)
+Writing at 0x000efb8c... (94 %)
+Writing at 0x000f5b8f... (97 %)
+Writing at 0x000faf43... (100 %)
+Wrote 967248 bytes (609086 compressed) at 0x00010000 in 15.6 seconds (effective 496.1 kbit/s)...
+Hash of data verified.
+Compressed 3072 bytes to 105...
+Writing at 0x00008000... (100 %)
+Wrote 3072 bytes (105 compressed) at 0x00008000 in 0.1 seconds (effective 281.8 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...
